@@ -52,8 +52,17 @@ for i in  range(2,ws.max_row+1):
             #添加断言
             exp = re.findall(r'"msg":"(.*?)"', res.text)
             exp = ''.join(exp[0])
+            '''
             if  dict['expValue'] != exp:
                 print(dict['api']+"   失败")
+                '''
+            #assert dict['expValue'] == exp,dict['api']+"   失败"
+            #断言失败继续执行
+            try:
+                assert dict['expValue'] == exp, dict['api']
+            except:
+                print(dict['api'] + "   失败")
+
 
     data.append(dict)
 
